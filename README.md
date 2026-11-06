@@ -7,3 +7,7 @@ this is the repository to get the MP language.
 4. click at the tree dots ("...")
 5. choose "Install from VSIX"
 6. choose the downloaded VSIX file.
+# to get "getex" (pip install):
+1. unzip the zipfile.
+2. open the folder
+3. follow the readme file for instructions.
