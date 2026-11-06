@@ -1,66 +1,73 @@
+
 # MP Programming Language
 
-**MP** is a custom programming language with simple, readable syntax, functions, loops, variables, lists, dictionaries, and support for extensions.
+**MP** is a custom programming language designed for readable programs, with variables, functions, loops, lists, dictionaries, and optional extensions. Write `.mp` files in **Visual Studio Code** and run them with **Node.js**.
 
-MP runs through **Visual Studio Code** and uses **Node.js** to execute programs.
+This repository contains the installers you need to get started on **Windows**.
 
-This guide explains how to install MP on a new Windows computer.
+## Download MP
 
-## 1. Requirements
+You are already on the MP GitHub repository! The installer files are in the file list above this README:
 
-Before installing MP, download and install:
+| File | Purpose |
+| --- | --- |
+| [`mp-language-0.6.9.vsix`](./mp-language-0.6.9.vsix) | MP language extension for Visual Studio Code |
+| [`getex-universal-0.3.0.zip`](./getex-universal-0.3.0.zip) | Optional extension installer for MP packages |
 
-- **[Visual Studio Code](https://code.visualstudio.com/download)** — The editor used to write and run MP programs.
-- **[Node.js](https://nodejs.org/)** — Required to execute MP programs. The LTS version is recommended.
+**To download a file:** click its filename in GitHub, then click the **Download raw file** icon (or **View raw / Download raw file**, depending on GitHub's layout). **Do not copy the file's preview or the GitHub page URL into VS Code.** Download the actual `.vsix` file.
 
-After installing Node.js, restart VS Code and open a new Terminal.
+## 1. Install the prerequisites
 
-Run:
+1. Install [Visual Studio Code](https://code.visualstudio.com/download).
+2. Install the LTS release of [Node.js](https://nodejs.org/en/download).
+3. Restart VS Code after installing Node.js.
+
+Open **Terminal → New Terminal** in VS Code and verify:
 
 ```powershell
 node --version
 npm --version
 ```
 
-If both commands display version numbers, Node.js is installed correctly.
+Both commands should print version numbers.
 
-## 2. Download MP
+## 2. Install MP in VS Code
 
-1. Open the [MP GitHub repository](https://github.com/mmangaming999/Get_MP_language).
-2. Open **Releases** and download the latest MP `.vsix` installer, if available.
-3. Alternatively, click **Code → Download ZIP** to download the repository files.
-4. Extract any ZIP files you downloaded.
+1. Download [`mp-language-0.6.9.vsix`](./mp-language-0.6.9.vsix) from this repository.
+2. Open VS Code and press **Ctrl+Shift+X** to open the Extensions view.
+3. Select the **…** menu at the top of the Extensions view.
+4. Click **Install from VSIX…** and select the downloaded `.vsix` file.
+5. Reload VS Code if prompted.
 
-The MP extension installer has a filename similar to:
+> **Note:** You do not need to install MP from the VS Code Marketplace. The `.vsix` file in this repository is the installer.
 
-```text
-mp-language-0.6.9.vsix
-```
+## 3. Enable the MP logo and syntax colors
 
-Use the newest compatible version available in the repository.
+After installing, VS Code may keep your previous themes. If the **MP logo does not appear**, or **`Make` looks blue instead of pink**, enable MP's included themes manually.
 
-**Note:** A source-code ZIP is not the same as a `.vsix` installer. If the repository contains only source code, you must build the extension or obtain a packaged VSIX.
+### Show MP file icons
 
-## 3. Install MP in Visual Studio Code
+1. Press **Ctrl+Shift+P** to open the Command Palette.
+2. Search for **Preferences: File Icon Theme** and select it.
+3. Choose **MP File Icons**.
 
-1. Open Visual Studio Code.
-2. Press `Ctrl + Shift + X` to open Extensions.
-3. Click the three-dot (`...`) menu at the top of the Extensions panel.
-4. Select **Install from VSIX...**
-5. Select the downloaded MP `.vsix` file.
-6. Reload VS Code if prompted.
+This enables the MP icon for `.mp` files in VS Code.
 
-MP should now be available in Visual Studio Code.
+### Make `Make` pink
 
-## 4. Run Your First MP Program
+1. Press **Ctrl+Shift+P** again.
+2. Search for **Preferences: Color Theme** and select it.
+3. Choose **MP Blue Dark**.
 
-Create a new file named:
+The function declaration keyword **`Make`** should now appear **pink**. Other MP keywords, such as `do`, use the theme's blue styling.
 
-```text
-hello.mp
-```
+`Make` is **capitalized** in MP source code. Write `Make`, not `make`.
 
-Enter the following MP code:
+If the changes do not appear immediately, run **Developer: Reload Window** from the Command Palette. Also ensure the file has a `.mp` extension and that the language mode in the bottom-right corner of VS Code is **MP**.
+
+## 4. Run your first MP program
+
+Create a file named **`hello.mp`** in VS Code, paste the following code, and save it:
 
 ```text
 ^ My first MP program ^
@@ -69,7 +76,6 @@ say("Hello, World!")
 
 set x to 10
 change x by 5
-
 say(x)
 
 Make hello() do {
@@ -79,9 +85,9 @@ Make hello() do {
 hello()
 ```
 
-Save the file and click the **Run** button provided by the MP extension in VS Code.
+Click the MP **▶ Run** button in the editor.
 
-### Expected output
+Expected Terminal output:
 
 ```text
 Hello, World!
@@ -89,85 +95,53 @@ Hello, World!
 MP is working!
 ```
 
-Congratulations! You have successfully installed and run MP.
+## 5. Install extensions with getex (optional)
 
-## 5. Install getex (Optional)
+**getex** installs compatible extensions for MP from GitHub. You do not need getex to run basic MP programs.
 
-**getex** is MP's extension installer. It allows you to install compatible MP extensions from GitHub.
-
-Download the universal getex installer from its distribution package.
-
-Extract the package and open a Terminal in the extracted folder.
-
-Run:
+1. Download [`getex-universal-0.3.0.zip`](./getex-universal-0.3.0.zip) from this repository.
+2. Extract the ZIP.
+3. Open a Windows Terminal in the folder containing `install-getex.ps1`.
+4. Run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install-getex.ps1
 ```
 
-Close and reopen the Terminal after installation.
-
-You can then install MP extensions using commands such as:
+Close and reopen the Terminal. You can then install optional libraries:
 
 ```powershell
 getex MPxiom
 getex MPG
 ```
 
-You can also install compatible extensions from other GitHub creators:
+You can also specify compatible GitHub projects directly:
 
 ```powershell
 getex username/repository
-```
-
-Or provide a complete GitHub repository URL:
-
-```powershell
 getex https://github.com/username/repository
 ```
 
-Only install extensions from sources you trust.
+Only install extensions from repositories you trust: some may run dependency installation scripts.
 
-## 6. Available MP Extensions
+### MPxiom: math functions
 
-### MPxiom — Mathematics
-
-[MPxiom on GitHub](https://github.com/mmangaming999/MPxiom)
-
-Install:
-
-```powershell
-getex MPxiom
-```
-
-Example:
+GitHub: [MPxiom](https://github.com/mmangaming999/MPxiom)
 
 ```text
 add "MPxiom"
-
 say(factorial(5))
 say(fibonacci(10))
-say(isPrime(97))
 ```
 
-### MPG — Graphics Engine
+### MPG: graphics and game development
 
-[MPG on GitHub](https://github.com/mmangaming999/MPG)
-
-MPG allows MP programs to create desktop windows, display shapes, detect keyboard input, and build graphical applications.
-
-Install:
-
-```powershell
-getex MPG
-```
-
-Example:
+GitHub: [MPG](https://github.com/mmangaming999/MPG)
 
 ```text
 add "MPG"
 
-win("My First MPG Window", 640, 480)
+win("Hello MPG!", 640, 480)
 fps(60)
 background("black")
 
@@ -178,130 +152,66 @@ Long(isopen()) do {
     if (key("escape")) do {
         quit()
     }
-
     clear()
     update()
 }
 ```
 
-This program should open a desktop window displaying a blue circle. Press Escape to close it.
+MPG uses a desktop window and has additional runtime dependencies, installed via getex. Ensure you're running MP v0.6.9 or another version that supports MPG.
 
-MPG requires its desktop graphics dependencies, which getex installs through npm.
-
-## 7. Basic MP Syntax
-
-### Variables
+## 6. MP syntax at a glance
 
 ```text
+^ Single-line comment ^
+
 set score to 0
 change score by 1
-say(score)
-```
 
-### Conditions
-
-```text
 if (score > 10) do {
     say("High score!")
 } elif (score > 5) do {
-    say("Good score!")
+    say("Nice!")
 } else do {
-    say("Keep trying!")
+    say("Keep going!")
 }
-```
 
-### Functions
-
-```text
 Make greet(name) do {
-    say("Hello, " + name)
+    return "Hello, " + name
 }
 
-greet("Alex")
-```
+say(greet("Alex"))
 
-### Loops
+set items to ["apple", "banana"]
+append(items, "grape")
+say(get(items, 0))
 
-```text
-set x to 0
-
-Long(x < 5) do {
-    say(x)
-    change x by 1
-}
-```
-
-### Lists
-
-```text
-set fruits to ["apple", "banana", "orange"]
-
-append(fruits, "grape")
-
-say(get(fruits, 0))
-```
-
-### Dictionaries
-
-```text
 set player to dict({
     "name" = "Alex",
-    "score" = 100,
-    "health" = 75
+    "score" = 100
 })
-
 say(get(player, "name"))
 ```
 
-### Comments
+**Remember:** MP comments using `^ ... ^` should stay on a single line, and MP syntax is not identical to JavaScript or Python.
 
-MP uses `^` to mark comments:
+## Troubleshooting
 
-```text
-^ This is an MP comment ^
-```
+| Problem | Try this |
+| --- | --- |
+| `node` or `npm` is not recognized | Install Node.js and reopen VS Code/Terminal. |
+| The MP **▶ Run** button is missing | Ensure `.mp` file extension, set language mode to **MP**, and verify the VSIX extension is installed and enabled. |
+| MP logo is missing | **Ctrl+Shift+P → Preferences: File Icon Theme → MP File Icons**. |
+| `Make` is lowercase or colored blue | Type **`Make`** with a capital M, then choose **MP Blue Dark** under **Preferences: Color Theme**. |
+| Colors or icons still look wrong | Run **Developer: Reload Window**. |
+| `add "MPG"` cannot load | Install getex, then run `getex MPG`; use an MP version with MPG support. |
+| MPG window does not launch | Check Electron/dependency installation and the error output in the VS Code Terminal. |
+| F5 asks for a debugger | MP v0.6.9 does not include a dedicated VS Code debugger; use MP's **▶ Run** button. |
 
-Keep each comment on one line.
+## Project links
 
-## 8. Troubleshooting
+- [MP programming language](https://github.com/mmangaming999/Get_MP_language)
+- [MPxiom mathematics extension](https://github.com/mmangaming999/MPxiom)
+- [MPG graphics engine](https://github.com/mmangaming999/MPG)
+- [M-Man Gaming on GitHub](https://github.com/mmangaming999)
 
-**MP files don't run**
-
-Make sure Node.js is installed and the MP VS Code extension is enabled. Restart VS Code after installation.
-
-**The Run button doesn't appear**
-
-Check that your file has the `.mp` extension and that VS Code recognizes it as MP.
-
-**An extension cannot be found**
-
-Make sure getex is installed correctly, the GitHub repository is accessible, and the extension follows the supported package format.
-
-**MPG doesn't open a window**
-
-Check that MPG installed its Electron dependency successfully and that you're using a version of MP with MPG runtime support.
-
-**A program shows an error**
-
-Read the error in the VS Code Terminal. MP's editor can also detect some unknown function calls and suggest corrections.
-
-## 9. About MP
-
-MP is an independently developed programming language with a VS Code extension and an expandable ecosystem.
-
-Its related projects include:
-
-- **MP** — The programming language.
-- **getex** — The extension installer.
-- **MPxiom** — Mathematics functions.
-- **MPG** — Desktop graphics and game development.
-
-MP programs use the `.mp` file extension.
-
-**Created by M-Man Gaming**
-
-GitHub: [mmangaming999](https://github.com/mmangaming999)
-
----
-
-**Enjoy programming with MP!**
+**Created by M-Man Gaming. Enjoy coding in MP!**
