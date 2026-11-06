@@ -10,4 +10,5 @@ this is the repository to get the MP language.
 # to get "getex" (pip install):
 1. unzip the zipfile.
 2. open the folder
-3. follow the readme file for instructions.
+3. fined getex.cmd and run it.
+4. follow the readme file for instructions.
